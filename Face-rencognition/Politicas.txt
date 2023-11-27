@@ -1,0 +1,36 @@
+POLITICAS 
+SQS
+{
+  "Version": "2008-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "sns.amazonaws.com"
+      },
+      "Action": "sqs:SendMessage",
+      "Resource": "arn:aws:sqs:us-east-1:221064814177:Cola-Log",
+      "Condition": {
+        "ArnEquals": {
+          "aws:SourceArn": "arn:aws:sns:us-east-1:221064814177:Tema-log-empleado"
+        }
+      }
+    }
+  ]
+}
+
+S3
+
+{
+    "Version": "2012-10-17",
+    "Id": "Policy1701019830710",
+    "Statement": [
+        {
+            "Sid": "Stmt1701019827902",
+            "Effect": "Allow",
+            "Principal": "*",
+            "Action": "s3:GetObject",
+            "Resource": "arn:aws:s3:::visitantes-temporales/*"
+        }
+    ]
+}

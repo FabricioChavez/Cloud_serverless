@@ -6,8 +6,8 @@ function App() {
 
   return (
 
-//<EntryExitMonitorLog/>
-<Employee_registration/>
+<EntryExitMonitorLog/>
+//<Employee_registration/>
 
   )
 

@@ -1,0 +1,108 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(53, 53, 53);
+  padding: 20px;
+  border-radius: 30px;
+  border: 1px solid rgb(255, 255, 255);
+  box-shadow: 1px 1px 10px 0px rgba(255, 255, 255, 0.3);
+} 
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+
+label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+form input, select {
+  display: block;
+  border: 1px solid #ccc;
+  background: none;
+  color: #fff;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 1.1em;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+form button[type="submit"] {
+  background-color: #292929;
+  width: 60%;
+  display: block;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: inherit;
+}
+
+img {
+  width: auto;
+  border-radius: 5px;
+}
+
+.success {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.failure {
+  background-color: #f44336;
+  color: white;
+  padding: 16px;
+  width: 100%;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.float-buttons {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 100px;
+  height: 30px;
+  border-radius: 0px 5px 5px 0px;
+  display: flex;
+  margin: 40px 80px;
+}
+
+.float-button {
+  display: block;
+  padding: 10px;
+  margin-left: 10px;
+  background-color: #292929;
+  width: 100%;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  color: inherit;
+}

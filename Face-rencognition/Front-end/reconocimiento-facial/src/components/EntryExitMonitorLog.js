@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import '../App.css';
+import '../css/Login.css';
 import placeholderImage from '../visitantes/Placeholder.jpg'; // Importar la imagen de placeholder
+
 const uuid = require('uuid');
 
 function EntryExitMonitorLog(){
@@ -46,7 +47,7 @@ function EntryExitMonitorLog(){
           console.log(error);
         });
     }
-   
+
     async function authenticate(visitorImageName) {
       const requestUrl = 'https://ed32u8vxs7.execute-api.us-east-1.amazonaws.com/dev/empleado?' + new URLSearchParams({
         objectKey: `${visitorImageName}.jpeg`
@@ -69,22 +70,34 @@ function EntryExitMonitorLog(){
                      : `https://visitantes-temporales.s3.amazonaws.com/${visitorImageName}.jpeg`;
   
     return (
-      <div className="App">
+      <>
         <h2>Sistema de verificación de identidad </h2>
-        <form onSubmit={sendImage}>
-          <input type='file' name='image' onChange={e => setImage(e.target.files[0])}/>
-          <input type='text' name='tenantId' placeholder='Ingrese Tenant ID' onChange={e => setTenantId(e.target.value)} required/>
-          <select name='modoIngreso' onChange={e => setModoIngreso(e.target.value)} defaultValue='Entrada'>
-            <option value='Entrada'>Entrada</option>
-            <option value='Salida'>Salida</option>
-          </select>
-          <button type='submit'> Autentificar identidad </button>
-        </form>
-        <div className={autentificado ? 'success' : 'failure'}>
-          {mensajeDeCarga}
+        <div className="App">
+          <div className={autentificado ? 'success' : 'failure'}>
+            {mensajeDeCarga}
+          </div>
+          <form onSubmit={sendImage}>
+            <label htmlFor='tenantId'>Tenant ID</label>
+            <input type='text' name='tenantId' placeholder='Ingrese Tenant ID' onChange={e => setTenantId(e.target.value)} required/>
+            <label htmlFor='image'>Imagen</label>
+            <input type='file' name='image' onChange={e => setImage(e.target.files[0])}/>
+            <label htmlFor='modoIngreso'>Modo de ingreso</label>
+            <select name='modoIngreso' onChange={e => setModoIngreso(e.target.value)} defaultValue='Entrada'>
+              <option value='Entrada'>Entrada</option>
+              <option value='Salida'>Salida</option>
+            </select>
+            <div className='button-container'>
+              <button type='submit'> Autentificar identidad </button>
+            </div>
+          </form>
+          <img src={imageUrl} alt="Visitante" height={250} width={250}/>
         </div>
-        <img src={imageUrl} alt="Visitante" height={250} width={250}/>
-      </div>
+
+        <div className='float-buttons'>
+          <button className='float-button' onClick={() => window.location.href='/login'}>Login</button>
+          <button className='float-button' onClick={() => window.location.href='/register'}>Register</button>
+        </div>
+      </>
     );
 }
 

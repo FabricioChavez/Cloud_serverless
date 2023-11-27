@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../App.css';
+import '../css/Login.css';
 import placeholderImage from '../visitantes/Placeholder.jpg'; // Importar la imagen de placeholder
 
 function Employee_registration(){
@@ -45,20 +45,33 @@ function Employee_registration(){
                      : `https://empleados-registrados.s3.amazonaws.com/${visitorImageName}`;
 
     return (
-      <div className="App">
+      <>
         <h2>Registro de Empleados</h2>
-        <form onSubmit={sendImage}>
-          <input type='text' name='firstName' placeholder='Ingrese el Nombre' onChange={e => setFirstName(e.target.value)} required/>
-          <input type='text' name='lastName' placeholder='Ingrese el Apellido' onChange={e => setLastName(e.target.value)} required/>
-          <input type='text' name='tenantId' placeholder='Ingrese Tenant ID' onChange={e => setTenantId(e.target.value)} required/>
-          <input type='file' name='image' onChange={e => setImage(e.target.files[0])} required/>
-          <button type='submit'> Registrar Empleado </button>
-        </form>
-        <div className={autentificado ? 'success' : 'failure'}>
-          {mensajeDeCarga}
+        <div className="App">
+          <div className={autentificado ? 'success' : 'failure'}>
+            {mensajeDeCarga}
+          </div>
+          <form onSubmit={sendImage}>
+            <label htmlFor='firstName'>Nombre: </label>
+            <input type='text' name='firstName' placeholder='Ingrese el Nombre' onChange={e => setFirstName(e.target.value)} required/>
+            <label htmlFor='lastName'>Apellido: </label>
+            <input type='text' name='lastName' placeholder='Ingrese el Apellido' onChange={e => setLastName(e.target.value)} required/>
+            <label htmlFor='tenantId'>Tenant ID: </label>
+            <input type='text' name='tenantId' placeholder='Ingrese Tenant ID' onChange={e => setTenantId(e.target.value)} required/>
+            <label htmlFor='image'>Imagen: </label>
+            <input type='file' name='image' onChange={e => setImage(e.target.files[0])} required/>
+            <div className="button-container">
+              <button type='submit'> Registrar Empleado </button>
+            </div>
+          </form>
+          <img src={imageUrl} alt="Empleado" height={250} width={250}/>
         </div>
-        <img src={imageUrl} alt="Empleado" height={250} width={250}/>
-      </div>
+
+        <div className='float-buttons'>
+          <button className='float-button' onClick={() => window.location.href='/login'}>Login</button>
+          <button className='float-button' onClick={() => window.location.href='/register'}>Register</button>
+        </div>
+      </>
     );
 }
 
